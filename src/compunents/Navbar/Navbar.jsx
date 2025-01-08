@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "../Link/Link";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { BsFillMenuButtonWideFill } from "react-icons/bs";
 
 const Navbar = () => {
    const [open,setOpen] = useState(false)
@@ -10,17 +10,16 @@ const Navbar = () => {
 
 
     return (
-        <nav>
-          <div className="md:hidden"
+        <nav className="text-slate-950  p-6">
+          <div className="md:hidden  "
           onClick={()=> setOpen(!open)}>
        {   
 
         open === true ? 
-        <HiOutlineMenuAlt2></HiOutlineMenuAlt2>
+        <BsFillMenuButtonWideFill></BsFillMenuButtonWideFill>
 
         
-        :  <HiOutlineMenuAlt2 className=""></HiOutlineMenuAlt2>
-
+        : <BsFillMenuButtonWideFill className="text-sky-300"></BsFillMenuButtonWideFill>
         
        }
 
@@ -28,7 +27,11 @@ const Navbar = () => {
 
          
           </div>
-            <ul className="md:flex">
+            <ul className={`md:flex duration-1000 px-6
+                shadow-lg
+                ${open ? 'top-16' : '-top-40' }
+                
+                absolute md:static bg-slate-400     shadow-lg`}>
             {
                 routes.map(route => <Link  key={route.id} route ={route}></Link>)
             }
